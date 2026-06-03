@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Poppins, Archivo } from 'next/font/google';
 import { site } from '@/content/site';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
 import './globals.css';
 
 // Display / headers — Poppins: heavy, geometric-ROUNDED, the closest Google-hosted
@@ -42,7 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // lang/dir centralized here — flip to 'ar'/'rtl' later without touching pages.
   return (
     <html lang="en" dir="ltr" className={`${display.variable} ${sans.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
