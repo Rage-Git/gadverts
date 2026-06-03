@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { site } from '@/content/site';
 import { Reveal } from '@/components/reveal';
 import { Eyebrow, Section } from '@/components/section';
+import { AnimatedText } from '@/components/animated-text';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -17,11 +18,11 @@ export default function AboutPage() {
         <Reveal>
           <Eyebrow>About</Eyebrow>
         </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-text-hi sm:text-7xl">
-            Creativity meets performance.
-          </h1>
-        </Reveal>
+        <AnimatedText
+          as="h1"
+          className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.02em] text-text-hi sm:text-7xl lg:text-8xl"
+          lines={['Creativity meets', { text: 'performance.', className: 'text-clip-paper' }]}
+        />
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-2xl font-sans text-lg leading-relaxed text-text-mid">
             {site.description} We combine creativity, performance marketing and real market

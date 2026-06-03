@@ -38,6 +38,36 @@ html {
 body {
   background-color: rgb(var(--ga-ink));
   color: rgb(var(--ga-text-hi));
+  font-feature-settings: 'ss01', 'cv01';
+}
+
+/* Brand selection: cream highlight, ink text. */
+::selection {
+  background-color: rgb(var(--ga-paper));
+  color: rgb(var(--ga-ink));
+}
+
+/* Slim, on-brand scrollbar. */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: rgb(var(--ga-ink)); }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ga-ink-mid));
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--ga-ink));
+}
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--ga-line)); }
+
+/* Tighten big headings; let them wrap gracefully. */
+.text-balance { text-wrap: balance; }
+
+@layer utilities {
+  /* Cream→transparent text gradient for hero emphasis words. */
+  .text-clip-paper {
+    background: linear-gradient(180deg, rgb(var(--ga-paper)) 0%, rgb(var(--ga-paper-dim)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* Respect reduced-motion across all marquee/float animations. */

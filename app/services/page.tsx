@@ -5,6 +5,7 @@ import { services } from '@/content/services';
 import { site } from '@/content/site';
 import { Reveal } from '@/components/reveal';
 import { Eyebrow, Section } from '@/components/section';
+import { AnimatedText } from '@/components/animated-text';
 import { iconMap } from '@/components/icons';
 
 export const metadata: Metadata = {
@@ -19,11 +20,11 @@ export default function ServicesPage() {
         <Reveal>
           <Eyebrow>Services</Eyebrow>
         </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 max-w-3xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-text-hi sm:text-7xl">
-            Everything your brand needs to grow.
-          </h1>
-        </Reveal>
+        <AnimatedText
+          as="h1"
+          className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.02em] text-text-hi sm:text-7xl lg:text-8xl"
+          lines={['Everything your', 'brand needs', { text: 'to grow.', className: 'text-clip-paper' }]}
+        />
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-2xl font-sans text-lg leading-relaxed text-text-mid">
             Seven service lines, fully integrated — strategy, performance, creative and PR working

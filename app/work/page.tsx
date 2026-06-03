@@ -6,6 +6,7 @@ import { previousClients, currentClientIndustries } from '@/content/clients';
 import { site } from '@/content/site';
 import { Reveal } from '@/components/reveal';
 import { Eyebrow, Section } from '@/components/section';
+import { AnimatedText } from '@/components/animated-text';
 
 export const metadata: Metadata = {
   title: 'Work',
@@ -19,11 +20,11 @@ export default function WorkPage() {
         <Reveal>
           <Eyebrow>Work</Eyebrow>
         </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 max-w-3xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-text-hi sm:text-7xl">
-            Results across the region.
-          </h1>
-        </Reveal>
+        <AnimatedText
+          as="h1"
+          className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.02em] text-text-hi sm:text-7xl lg:text-8xl"
+          lines={['Results', { text: 'across the region.', className: 'text-clip-paper' }]}
+        />
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-2xl font-sans text-lg leading-relaxed text-text-mid">
             From homegrown social brands to regional retail giants — branding, social media and

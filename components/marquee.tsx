@@ -1,38 +1,42 @@
-/** Infinite horizontal marquee. Duplicates children so the loop is seamless. */
+/**
+ * Oversized kinetic marquee. Alternates solid and outlined display type with a
+ * brand "•" between items. Pauses on hover. Optional reverse direction.
+ */
 export function Marquee({
   items,
   speed = 'normal',
+  reverse = false,
 }: {
   items: readonly string[];
   speed?: 'normal' | 'slow';
+  reverse?: boolean;
 }) {
   const anim = speed === 'slow' ? 'animate-marquee-slow' : 'animate-marquee';
+  const dir = reverse ? '[animation-direction:reverse]' : '';
   return (
-    <div className="group relative flex overflow-hidden border-y border-line py-6">
-      <div className={`flex shrink-0 items-center gap-12 pr-12 ${anim} group-hover:[animation-play-state:paused]`}>
-        {items.map((it, i) => (
-          <Item key={`a-${i}`} label={it} />
-        ))}
-      </div>
-      <div
-        aria-hidden
-        className={`flex shrink-0 items-center gap-12 pr-12 ${anim} group-hover:[animation-play-state:paused]`}
-      >
-        {items.map((it, i) => (
-          <Item key={`b-${i}`} label={it} />
-        ))}
-      </div>
+    <div className="group relative flex overflow-hidden py-3">
+      {[0, 1].map((dup) => (
+        <div
+          key={dup}
+          aria-hidden={dup === 1}
+          className={`flex shrink-0 items-center ${anim} ${dir} group-hover:[animation-play-state:paused]`}
+        >
+          {items.map((it, i) => (
+            <span key={`${dup}-${i}`} className="flex items-center">
+              <span
+                className={
+                  i % 2 === 0
+                    ? 'whitespace-nowrap px-8 font-display text-5xl font-extrabold uppercase tracking-tight text-text-hi sm:text-7xl'
+                    : 'whitespace-nowrap px-8 font-display text-5xl font-extrabold uppercase tracking-tight text-transparent sm:text-7xl [-webkit-text-stroke:1px_rgb(var(--ga-text-mid))]'
+                }
+              >
+                {it}
+              </span>
+              <span className="text-2xl text-paper sm:text-4xl">•</span>
+            </span>
+          ))}
+        </div>
+      ))}
     </div>
-  );
-}
-
-function Item({ label }: { label: string }) {
-  return (
-    <span className="flex items-center gap-12">
-      <span className="whitespace-nowrap font-display text-2xl font-semibold tracking-tight text-paper-dim sm:text-3xl">
-        {label}
-      </span>
-      <span className="text-text-low">/</span>
-    </span>
   );
 }

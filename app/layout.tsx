@@ -3,6 +3,7 @@ import { Poppins, Archivo } from 'next/font/google';
 import { site } from '@/content/site';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { Grain } from '@/components/grain';
 import './globals.css';
 
 // Display / headers — Poppins: heavy, geometric-ROUNDED, the closest Google-hosted
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" dir="ltr" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
+        <Grain />
         <SiteHeader />
         {children}
         <SiteFooter />

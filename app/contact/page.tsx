@@ -3,6 +3,7 @@ import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { site } from '@/content/site';
 import { Reveal } from '@/components/reveal';
 import { Eyebrow, Section } from '@/components/section';
+import { AnimatedText } from '@/components/animated-text';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -16,11 +17,11 @@ export default function ContactPage() {
         <Reveal>
           <Eyebrow>Contact</Eyebrow>
         </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-text-hi sm:text-7xl lg:text-8xl">
-            {site.cta}
-          </h1>
-        </Reveal>
+        <AnimatedText
+          as="h1"
+          className="mt-6 max-w-4xl font-display text-6xl font-extrabold leading-[0.9] tracking-[-0.03em] text-text-hi sm:text-8xl lg:text-9xl"
+          lines={["let's grow", { text: 'your brand.', className: 'text-clip-paper' }]}
+        />
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-2xl font-sans text-lg leading-relaxed text-text-mid">
             Tell us about your brand and where you want to take it. We&apos;ll get back to you fast.
