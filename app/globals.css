@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * ============================================================
+ * G Adverts brand tokens — SINGLE SOURCE OF TRUTH for color.
+ * Derived from the actual logo set (warm charcoal + cream,
+ * monochrome). The brand has NO chromatic accent — its "pop"
+ * is high-contrast cream/paper against warm near-black.
+ * Edit ONLY this block to retune the whole site.
+ * Format is "R G B" (space-separated) so Tailwind alpha works.
+ * ============================================================
+ */
+:root {
+  /* surfaces — warm near-blacks (logo-3 charcoal is ~#2B2924) */
+  --ga-ink:      20 19 16;     /* #141310  page base */
+  --ga-ink-soft: 30 28 24;     /* #1E1C18  raised panel */
+  --ga-ink-mid:  43 41 36;     /* #2B2924  card (matches logo charcoal) */
+  --ga-line:     60 57 50;     /* #3C3932  hairline / border */
+
+  /* paper — warm cream wordmark color (logo-3 ~#E9E5DC) */
+  --ga-paper:     233 229 220; /* #E9E5DC  cream */
+  --ga-paper-dim: 200 195 184; /* #C8C3B8 */
+
+  /* text on dark */
+  --ga-text-hi:  237 233 224;  /* #EDE9E0 */
+  --ga-text-mid: 176 170 158;  /* #B0AA9E */
+  --ga-text-low: 122 117 106;  /* #7A756A */
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: rgb(var(--ga-ink));
+  color: rgb(var(--ga-text-hi));
+}
+
+/* Respect reduced-motion across all marquee/float animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
